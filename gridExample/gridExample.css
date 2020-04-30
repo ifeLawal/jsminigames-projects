@@ -57,3 +57,14 @@ grid-area: header4;
     grid-row: span 2;
     /* grid-row: 2 / 4; */
 }
+
+.flipGame {
+    padding: 10px;
+    background-color: lightseagreen;
+    margin: 20px;
+    margin-bottom: 0;
+}
+.flipGame a {
+    color: white;
+    text-decoration: none;
+}
