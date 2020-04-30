@@ -1,0 +1,35 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --project-size: 100px;
+}
+
+a {
+    color: white;
+    /* text-decoration: none; */
+}
+
+body {
+    background-color: lightseagreen;
+}
+
+.projects {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    align-items: center;
+    grid-gap: 20px;
+}
+
+.cell {
+    width: calc(var(--project-size)* 1.5);
+    height: var(--project-size);
+    background-color: rgb(3, 138, 32);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

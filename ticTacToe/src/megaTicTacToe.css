@@ -8,7 +8,16 @@
     --mark-size: calc(var(--cell-size) * .9);
 }
 
-html, body {
+.flipGame {
+    padding: 10px;
+    background-color: lightseagreen;
+}
+.flipGame a {
+    color: white;
+    text-decoration: none;
+}
+
+.gameSpace {
     margin: 0px;
     height: 100vh;
     width: 100vw;
