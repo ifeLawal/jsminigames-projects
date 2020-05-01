@@ -36,8 +36,13 @@
     grid-template-rows: repeat(3, auto);
 }
 
-.cluster {
+.active .cell {
     border: 1px solid black;
+}
+
+
+.cluster {
+    border: 1px solid grey;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -49,7 +54,7 @@
 .cell {
     height: var(--cell-size);
     width: var(--cell-size);
-    border: 1px solid black ;
+    border: 1px solid grey ;
     display: flex;
     justify-content: center;
     align-items: center;

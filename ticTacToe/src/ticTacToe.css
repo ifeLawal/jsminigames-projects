@@ -20,8 +20,20 @@ html, body {
     text-decoration: none;
 }
 
+.menuOptions {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.menuOptions button {
+    padding: 10px;
+    background-color: darkblue;
+    color: white;
+}
+
 .board {
-    height: 100vh;
+    height: 80vh;
     width: 100vw;
     display: grid;
     justify-content: center;

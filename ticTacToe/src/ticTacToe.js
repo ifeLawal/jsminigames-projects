@@ -12,11 +12,38 @@ const WINNING_COMBINATIONS = [
 const CIRCLE_CLASS = 'circle';
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 let circleTurn;
+let npcOn = true;
 
 const winningMessageElement = document.getElementById('winning-message');
 const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
 document.getElementById('restartButton').addEventListener('click', restartGame);
+const npcToggleButton = document.getElementById('npcToggle');
+
+// a sleep function to see two npcs playing against each other
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function turnOnNPC() {
+    if(!(gameInSession())) {
+        if(npcToggleButton.innerText == "Turn off NPC") {
+            npcToggleButton.innerText = "Turn on NPC";
+            npcToggleButton.style = "background-color: grey; color: white";
+        } else {
+            npcToggleButton.innerText = "Turn off NPC";
+            npcToggleButton.style = "background-color: darkblue; color: white";
+        }
+    } else {
+        alert("Game is in session, so you can not turn on npc");
+    }
+}
+
+function gameInSession() {
+    return [...cellElements].some(cell => {
+        return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
+    })
+}
 
 startGame()
 
@@ -36,6 +63,25 @@ function restartGame() {
     startGame();
 }
 
+async function MakeNPCMove() {
+    if(circleTurn) {
+        let availableCells = checkForFreeCells();
+        await sleep(1000);
+        shuffle(availableCells);
+        availableCells[0].click();
+    }
+}
+
+function checkForFreeCells() {
+    let freeCells = [];
+    cellElements.forEach(cell => {
+        if(!(cell.classList.contains(CIRCLE_CLASS) || cell.classList.contains(X_CLASS))){
+            freeCells.push(cell);
+        }
+    })
+    return freeCells;
+}
+
 function handleClick(e) {
     const cell = e.target;
     const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
@@ -47,12 +93,11 @@ function handleClick(e) {
         endGame(true)
     } else {
         swapTurns(); // Switch Turns
+        if(npcOn) {
+            MakeNPCMove();
+        }
         setBoardHover(); 
     }
-    
-    
-    
-    
     
 }
 
@@ -91,3 +136,27 @@ function checkWinner(currentClass) {
         })
     })
 }
+
+// helper methods
+
+
+var shuffle = function (array) {
+
+	var currentIndex = array.length;
+	var temporaryValue, randomIndex;
+
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	return array;
+
+};
