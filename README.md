@@ -30,7 +30,7 @@ Rules
 
 Things to add
 - Have a popup of who won and a restart button
-- Have a line cut through the matches to help players see there matches clearly on the board
+- Have a line cut through the matches to help players see there matches clearly on the board (current image done through photoshop rather than the game itself)
 - Smarter npc gameplay. NPC currently plays randomly
 - Clean up code placement in document and add comments
 - QA the matching conditions, especially diagonals
