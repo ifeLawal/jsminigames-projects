@@ -26,7 +26,7 @@ Rules
 - You gain 1 match for any pairings of your 3 marks 3 ie 3 in a row = 1 match, 4-5 in a row = 1 match, 6 in a row = 2 matches
 - Whoever gets the most matches wins 
 
-![Image of mega tic tac toe page](/images/MegaTicTacToeScreenAtWorkWins.png)
+![Image of mega tic tac toe page](/images/MegaTicTacToeAtWorkWins.png)
 
 Things to add
 - Have a popup of who won and a restart button
