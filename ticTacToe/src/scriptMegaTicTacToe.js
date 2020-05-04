@@ -161,6 +161,181 @@ function handleClick(e) {
     
 }
 
+
+
+function isDraw () {
+    return [...cellElements].every(cell => {
+        return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
+    })
+}
+
+function endGame(draw){
+    if(draw) {
+        winningMessageTextElement.innerText = 'Draw!';
+    } else {
+        winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} Win!`
+    }
+    winningMessageElement.classList.add('show')
+}
+
+function placeMark(cell, currentClass) {
+    cell.classList.add(currentClass);
+}
+
+function swapTurns() {
+    circleTurn = !circleTurn;
+}
+
+function setBoardHover(subBoard) {
+    // console.log(cluster);
+    subBoard.classList.remove(X_CLASS, CIRCLE_CLASS);
+    subBoard.classList.add(circleTurn ? CIRCLE_CLASS : X_CLASS);
+}
+
+// function checkWinner(currentClass) {
+//     return WINNING_COMBINATIONS.some(combination => {
+//         return combination.every(index => {
+//             return cellElements[index].classList.contains(currentClass)
+//         })
+//     })
+// }
+
+
+// take clusters and cells and create a 2 dimensional board representation with
+// the X and Circle values
+// unwrap cluster to figure out where things go
+// check the amount of matches vertical, horizontal, and diagonal for each class
+// return the winner with the most matches or draw if equal
+checkWinner();
+
+function checkWinner() {
+    // twoDBoard[8][8] = 'X';
+    for(let i = 0; i < LENGTH_OF_MEGA_TIC_TAC_TOE_BOARD; i++) {
+        let j = 0;
+        for(j; j % LENGTH_OF_TIC_TAC_TOE_BOARD != 0; j++) {
+
+        }
+    }
+    // loop through cluster query
+    // loop through cells
+    // create twoDBoard
+    // checkwinners of 2d board
+    // 
+    console.log(twoDBoard)
+    console.log(clusterElements[0].querySelectorAll('[data-cell'));
+}
+
+
+function getClusterAndCellIndexFromElement(element) {
+    var index = [...element.parentNode.querySelectorAll('[data-cell')].indexOf(element);
+    var indexcluster = [...element.parentNode.parentNode.querySelectorAll('[data-cluster]')].indexOf(element.parentNode);
+        
+    return [indexcluster, index];
+}
+
+function returnTwoDBoardLocationFromClusterAndCellPosition(clusterIndex, cellIndex) {
+    // the two d board is a 9x9 2 d array
+    // cellIndex always equates to [0-2][0-2]; [0,1,2][3,4,5][6,7,8]
+    // by adding the clusterIndex value you transpose the cellIndex to the right board
+    // ie cellIndex: 5 -> [1][2]
+    // clusterIndex 0: transpose by [0][0], so [1][2]
+    // clusterIndex 1: transpose by [0][3] so [1][5]
+    // clusterIndex 4: transpose by [3][3] so [4][5]
+    // convert cluster index into [boardx, boardy]
+    // multiply boardx & boardy by length of tic tac toe board to transpose it accordingly to the 2D board
+    // add the converted index of the cell data
+    // append value in the cell to the 2dboard
+    let clusterPosition = convertIndextoBoardLocation(clusterIndex);
+    let cellPosition = convertIndextoBoardLocation(cellIndex);
+    clusterPosition = clusterPosition.map(x => x * LENGTH_OF_TIC_TAC_TOE_BOARD);
+    let twoDBoardLocation = clusterPosition.map( (num, index) => {
+        return num + cellPosition[index];
+    });
+    // console.log(twoDBoardLocation);
+    return twoDBoardLocation;
+}
+
+// a function to convert a single index value from the 0-9 data cell array pull
+// and conver that value into a 3x3 2 d board position
+function convertIndextoBoardLocation(val) {
+    let boardx = 0;
+    let boardy = 0;
+    if (val % (LENGTH_OF_TIC_TAC_TOE_BOARD - 1) == 0) {
+        boardx = Math.floor(val/LENGTH_OF_TIC_TAC_TOE_BOARD);
+        boardy = val % LENGTH_OF_TIC_TAC_TOE_BOARD;
+    } else {
+        boardx = Math.floor(val/LENGTH_OF_TIC_TAC_TOE_BOARD);
+        boardy = val % LENGTH_OF_TIC_TAC_TOE_BOARD;
+    }
+
+    return [boardx, boardy];
+}
+
+function createTwoDBoard() {
+    var outerArr = [];
+    for(let i = 0; i < LENGTH_OF_MEGA_TIC_TAC_TOE_BOARD; i++) {
+        outerArr.push(new Array(LENGTH_OF_MEGA_TIC_TAC_TOE_BOARD));
+        outerArr[i].fill('');
+    }
+    return outerArr;
+}
+
+async function MakeNPCMove(subBoard) {
+    if(circleTurn) {
+        let availableCells = checkForFreeCells(subBoard);
+        await sleep(1000);
+        shuffle(availableCells);
+        availableCells[0].click();
+    }
+}
+
+
+// a sleep function to see two npcs playing against each other
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function turnOnNPC() {
+    if(!(gameInSession())) {
+        if(npcToggleButton.innerText == "Turn off NPC") {
+            npcOn = !npcOn;
+            npcToggleButton.innerText = "Turn on NPC";
+            npcToggleButton.style = "background-color: grey; color: white";
+        } else {
+            npcOn = !npcOn;
+            npcToggleButton.innerText = "Turn off NPC";
+            npcToggleButton.style = "background-color: darkblue; color: white";
+        }
+    } else {
+        if(npcOn) {
+            alert("Game is in session, so you can not turn off npc");
+        } else {
+            alert("Game is in session, so you can't turn on NPC")
+        }
+    }
+}
+
+
+function gameInSession() {
+    return [...cellElements].some(cell => {
+        return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
+    })
+}
+
+
+function checkForFreeCells(subBoard) {
+    let freeCells = [];
+    let boardElements = subBoard.querySelectorAll('[data-cell]');
+    boardElements.forEach(cell => {
+        if(!(cell.classList.contains(CIRCLE_CLASS) || cell.classList.contains(X_CLASS))){
+            freeCells.push(cell);
+        }
+    })
+    return freeCells;
+}
+
+
+
 function checkForMatches() {
     let diagonalPositiveSlopeXandCircleMatches = diagonalPositiveSlopeMatching();
     let diagonalNegativeSlopeXandCircleMatches = diagonalNegativeSlopeMatching();
@@ -410,172 +585,4 @@ function isSubBoardComplete(subBoard) {
     return [...cellElements].every(cell => {
         return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
     })
-}
-
-function isDraw () {
-    return [...cellElements].every(cell => {
-        return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
-    })
-}
-
-function endGame(draw){
-    if(draw) {
-        winningMessageTextElement.innerText = 'Draw!';
-    } else {
-        winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} Win!`
-    }
-    winningMessageElement.classList.add('show')
-}
-
-function placeMark(cell, currentClass) {
-    cell.classList.add(currentClass);
-}
-
-function swapTurns() {
-    circleTurn = !circleTurn;
-}
-
-function setBoardHover(subBoard) {
-    // console.log(cluster);
-    subBoard.classList.remove(X_CLASS, CIRCLE_CLASS);
-    subBoard.classList.add(circleTurn ? CIRCLE_CLASS : X_CLASS);
-}
-
-// function checkWinner(currentClass) {
-//     return WINNING_COMBINATIONS.some(combination => {
-//         return combination.every(index => {
-//             return cellElements[index].classList.contains(currentClass)
-//         })
-//     })
-// }
-
-
-// take clusters and cells and create a 2 dimensional board representation with
-// the X and Circle values
-// unwrap cluster to figure out where things go
-// check the amount of matches vertical, horizontal, and diagonal for each class
-// return the winner with the most matches or draw if equal
-checkWinner();
-
-function checkWinner() {
-    // twoDBoard[8][8] = 'X';
-    for(let i = 0; i < LENGTH_OF_MEGA_TIC_TAC_TOE_BOARD; i++) {
-        let j = 0;
-        for(j; j % LENGTH_OF_TIC_TAC_TOE_BOARD != 0; j++) {
-
-        }
-    }
-    // loop through cluster query
-    // loop through cells
-    // create twoDBoard
-    // checkwinners of 2d board
-    // 
-    console.log(twoDBoard)
-    console.log(clusterElements[0].querySelectorAll('[data-cell'));
-}
-
-
-function getClusterAndCellIndexFromElement(element) {
-    var index = [...element.parentNode.querySelectorAll('[data-cell')].indexOf(element);
-    var indexcluster = [...element.parentNode.parentNode.querySelectorAll('[data-cluster]')].indexOf(element.parentNode);
-        
-    return [indexcluster, index];
-}
-
-function returnTwoDBoardLocationFromClusterAndCellPosition(clusterIndex, cellIndex) {
-    // cluster index
-    // convert cluster index into [boardx, boardy]
-    // multiply boardx & boardy by length of tic tac toe board to transpose it accordingly to the 2D board
-    // add the converted index of the cell data
-    // append value in the cell to the 2dboard
-    let clusterPosition = convertIndextoBoardLocation(clusterIndex);
-    let cellPosition = convertIndextoBoardLocation(cellIndex);
-    clusterPosition = clusterPosition.map(x => x * LENGTH_OF_TIC_TAC_TOE_BOARD);
-    let twoDBoardLocation = clusterPosition.map( (num, index) => {
-        return num + cellPosition[index];
-    });
-    console.log(twoDBoardLocation);
-    return twoDBoardLocation;
-}
-
-// rather than creating a 2d board, could I match the values using 
-// where they should be. ie cluster 0: 0-2, cluster 1: 0-2, cluster 2: 0-2
-// cluster 0: 3-5, cluster 1: 3-5, cluster 2: 3-5
-// 
-
-function convertIndextoBoardLocation(val) {
-    let boardx = 0;
-    let boardy = 0;
-    if (val % (LENGTH_OF_TIC_TAC_TOE_BOARD - 1) == 0) {
-        boardx = Math.floor(val/LENGTH_OF_TIC_TAC_TOE_BOARD);
-        boardy = val % LENGTH_OF_TIC_TAC_TOE_BOARD;
-    } else {
-        boardx = Math.floor(val/LENGTH_OF_TIC_TAC_TOE_BOARD);
-        boardy = val % LENGTH_OF_TIC_TAC_TOE_BOARD;
-    }
-
-    return [boardx, boardy];
-}
-
-function createTwoDBoard() {
-    var outerArr = [];
-    for(let i = 0; i < LENGTH_OF_MEGA_TIC_TAC_TOE_BOARD; i++) {
-        outerArr.push(new Array(LENGTH_OF_MEGA_TIC_TAC_TOE_BOARD));
-        outerArr[i].fill('');
-    }
-    return outerArr;
-}
-
-async function MakeNPCMove(subBoard) {
-    if(circleTurn) {
-        let availableCells = checkForFreeCells(subBoard);
-        await sleep(1000);
-        shuffle(availableCells);
-        availableCells[0].click();
-    }
-}
-
-
-// a sleep function to see two npcs playing against each other
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function turnOnNPC() {
-    if(!(gameInSession())) {
-        if(npcToggleButton.innerText == "Turn off NPC") {
-            npcOn = !npcOn;
-            npcToggleButton.innerText = "Turn on NPC";
-            npcToggleButton.style = "background-color: grey; color: white";
-        } else {
-            npcOn = !npcOn;
-            npcToggleButton.innerText = "Turn off NPC";
-            npcToggleButton.style = "background-color: darkblue; color: white";
-        }
-    } else {
-        if(npcOn) {
-            alert("Game is in session, so you can not turn off npc");
-        } else {
-            alert("Game is in session, so you can't turn on NPC")
-        }
-    }
-}
-
-
-function gameInSession() {
-    return [...cellElements].some(cell => {
-        return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
-    })
-}
-
-
-function checkForFreeCells(subBoard) {
-    let freeCells = [];
-    let boardElements = subBoard.querySelectorAll('[data-cell]');
-    boardElements.forEach(cell => {
-        if(!(cell.classList.contains(CIRCLE_CLASS) || cell.classList.contains(X_CLASS))){
-            freeCells.push(cell);
-        }
-    })
-    return freeCells;
 }
