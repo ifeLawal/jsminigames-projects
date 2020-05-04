@@ -318,7 +318,7 @@ function diagonalNegativeSlopeMatching() {
             }
 
             if(y+2 >= LENGTH_OF_MEGA_TIC_TAC_TOE_BOARD - x && matchesInARow>=3) {
-                if(twoDBoard[x][y+x] == 'x') {xMatchesInARow += Math.floor(matchesInARow/3);} 
+                if(twoDBoard[x+y][y] == 'x') {xMatchesInARow += Math.floor(matchesInARow/3);} 
                 else { oMatchesInARow += Math.floor(matchesInARow/3);}
                 matchesInARow = 1;
             }
