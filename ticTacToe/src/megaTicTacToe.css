@@ -19,7 +19,7 @@
 
 .gameSpace {
     margin: 0px;
-    height: 100vh;
+    height: 65vh;
     width: 100vw;
     display: flex;
     align-items: center;
@@ -34,6 +34,40 @@
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(3, auto);
+}
+
+.menuOptions {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.matches {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 30px;
+    font-size: 1.4em;
+}
+
+.rules h2 {
+    margin:0px;
+    padding: 0px;
+    padding-bottom: 10px;
+}
+
+.rules {
+    max-width: 400px;
+    padding-bottom: 10px;
+}
+
+.menuOptions button {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: darkblue;
+    color: white;
+    width: 130px;
 }
 
 .active .cell {
