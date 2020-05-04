@@ -28,6 +28,7 @@ const board = document.getElementById('board');
 document.getElementById('restartButton').addEventListener('click', restartGame);
 const xMatchesMessage = document.getElementById('xMatches')
 const circleMatchesMessage = document.getElementById('circleMatches')
+const npcToggleButton = document.getElementById('npcToggle');
 
 let twoDBoard;
 let board_order = [0,1,2,3,4,5,6,7,8];
