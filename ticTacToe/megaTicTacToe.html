@@ -16,7 +16,7 @@
         page </a></button>
     <div class="gameSpace">
         <div class='board' id="board">
-            <div class="cluster x" data-cluster>
+            <div class="cluster" data-cluster>
                 <div class="cell" data-cell></div>
                 <div class="cell" data-cell></div>
                 <div class="cell" data-cell></div>
@@ -117,7 +117,17 @@
             </div>
         </div>
     </div>
-    
+    <div class='menuOptions'>
+        <div class="rules">
+            <h2>Welcome to mega tic tac toe</h2> How you play: You and
+        another player (or npc) play on 9 tic tac toe boards. Matches of 3 can be
+        made across boards. Matches of 4 / 5 do not grant extra points. The person with the most matches wins. </div>
+        <div class="matches">
+            <div id="xMatches">x matches:</div>
+            <div id="circleMatches">circle matches:</div>
+        </div>
+        <button id='npcToggle' onclick="turnOnNPC()">Turn off NPC</button>
+    </div>
     <div class="winning-message" id="winning-message">
     <button id="restartButton">Restart</button></div>
 </body>

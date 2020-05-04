@@ -28,14 +28,20 @@ function sleep(ms) {
 function turnOnNPC() {
     if(!(gameInSession())) {
         if(npcToggleButton.innerText == "Turn off NPC") {
+            npcOn = !npcOn;
             npcToggleButton.innerText = "Turn on NPC";
             npcToggleButton.style = "background-color: grey; color: white";
         } else {
+            npcOn = !npcOn;
             npcToggleButton.innerText = "Turn off NPC";
             npcToggleButton.style = "background-color: darkblue; color: white";
         }
     } else {
-        alert("Game is in session, so you can not turn on npc");
+        if(npcOn) {
+            alert("Game is in session, so you can not turn off npc");
+        } else {
+            alert("Game is in session, so you can't turn on NPC")
+        }
     }
 }
 
@@ -64,12 +70,10 @@ function restartGame() {
 }
 
 async function MakeNPCMove() {
-    if(circleTurn) {
-        let availableCells = checkForFreeCells();
-        await sleep(1000);
-        shuffle(availableCells);
-        availableCells[0].click();
-    }
+    let availableCells = checkForFreeCells();
+    await sleep(1000);
+    shuffle(availableCells);
+    availableCells[0].click();
 }
 
 function checkForFreeCells() {
@@ -93,7 +97,7 @@ function handleClick(e) {
         endGame(true)
     } else {
         swapTurns(); // Switch Turns
-        if(npcOn) {
+        if(npcOn && circleTurn) {
             MakeNPCMove();
         }
         setBoardHover(); 
