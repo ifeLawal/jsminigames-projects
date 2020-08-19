@@ -4,11 +4,13 @@
 // part 3 is taking player input and checking for a winner condition
 // part 4 is outputting winner or tie
 
+
 var board = [['', '', ''],
              ['', '', ''],
              ['', '', '']
             ];
 var players = ['O','X'];
+
 // var availableX = [0,1,2,3,4,5,6,7,8,9];
 var availableX = [];
 var winner = false;
@@ -19,17 +21,17 @@ var gameOver = false;
 // 3/3 = 1
 // 4/3 = 1 1
 
-// if you wanted to create the board with user input
-// this function would create a single array representing the
+// if you wanted to create the board with user input,
+// this function would create a single array transformation of the
 // 2 dimensional slots
 function createBoardUnwrap() {
-    // for if it wasn't a square. If it is a square Math.pow(board.length, 2) is more efficient
+    // for if it wasn't a square. If it is a square, Math.pow(board.length, 2) is more efficient
     for(let i = 0; i < board.length*board[0].length; i++) {
         availableX.push(i)
     }
 }
 
-// takes a single value that represents a position in the unwrapped single array
+// takes a single value that represents a position in the trasnformed single array
 // takes the value and returns the corresponding x and y position on the 2 dimensional board
 function convertSingleArraytoBoard(val) {
     var boardx;

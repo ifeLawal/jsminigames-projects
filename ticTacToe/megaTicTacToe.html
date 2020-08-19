@@ -8,12 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-    <button class="flipGame"><a href="ticTacToe.html"> Play Tic Tac
-        Toe</a></button>
-        <button class="flipGame"><a href="../index.html"> Back to
-        projects</a></button>
-        <button class="flipGame"><a href="https://github.com/ifeLawal/jsminigames-projects"> Back to github
-        page </a></button>
+    <a href="ticTacToe.html"></a><button class="flipGame"> Play Tic Tac
+        Toe</button></a>
+        <a href="../index.html"></a><button class="flipGame"> Back to
+        projects</button></a>
+        <a href="https://github.com/ifeLawal/jsminigames-projects"></a><button class="flipGame"> Back to github
+        page </button></a>
     <div class="gameSpace">
         <div class='board' id="board">
             <div class="cluster" data-cluster>
@@ -117,7 +117,9 @@
             </div>
         </div>
     </div>
+    
     <div class='menuOptions'>
+        <hr>
         <div class="rules">
             <h2>Welcome to mega tic tac toe</h2> How you play: You and
         another player (or npc) play on 9 tic tac toe boards. Matches of 3 can be
@@ -129,6 +131,8 @@
         <button id='npcToggle' onclick="turnOnNPC()">Turn off NPC</button>
     </div>
     <div class="winning-message" id="winning-message">
-    <button id="restartButton">Restart</button></div>
+        <div id="winning-text-message"></div>
+        <button id="restartButton">Restart</button>
+    </div>
 </body>
 </html>

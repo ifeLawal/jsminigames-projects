@@ -165,3 +165,11 @@ html, body {
 .winning-message.show {
     display: flex;
 }
+
+#restartButton.show {
+    display: flex;
+}
+
+#npcToggle {
+    cursor: pointer;
+}

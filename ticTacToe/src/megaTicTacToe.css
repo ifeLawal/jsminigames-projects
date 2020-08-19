@@ -6,6 +6,8 @@
     --board-size: 470px;
     --cell-size: 50px;
     --mark-size: calc(var(--cell-size) * .9);
+    /* --circle-color: red;
+    --x-color: green; */
 }
 
 .flipGame {
@@ -74,7 +76,6 @@
     border: 1px solid black;
 }
 
-
 .cluster {
     border: 1px solid grey;
     display: grid;
@@ -94,6 +95,7 @@
     align-items: center;
     position: relative;
     cursor: pointer;
+    background-color: white;
 }
 
 .cell:first-child,
@@ -206,4 +208,8 @@
 
 .winning-message.show {
     display: flex;
+}
+
+#npcToggle {
+    cursor: pointer;
 }
