@@ -26,12 +26,12 @@ representation of the UI cells and clusters
 **diagonalPositiveSlopeMatching()**
 checking for one direction of diagonal matches
 
-![9 tic tac toe boards stack 3 from left to right and 3 top to bottom](https://drive.google.com/uc?id=1ZvoZHWI8Kq2qfFh2MRDqhzRmgdiehXWg) 
+![9 tic tac toe boards stack 3 from left to right and 3 top to bottom. A showing of diagonal negtive slope matching](https://drive.google.com/uc?id=1ZvoZHWI8Kq2qfFh2MRDqhzRmgdiehXWg) 
 
 **diagonalNegativeSlopeMatching()**
 checking for the other direction of diagonal matches
 
-![9 tic tac toe boards stack 3 from left to right and 3 top to bottom](https://drive.google.com/file/d/1JWvtDPvkoJxemBJmDCqPu2ZbE7JodNXL/view?usp=sharing)
+![9 tic tac toe boards stack 3 from left to right and 3 top to bottom. A showing of diagonal negtive slope matching](https://drive.google.com/uc?id=1JWvtDPvkoJxemBJmDCqPu2ZbE7JodNXL)
 
 **verticalMatching()**
 checking for vertical matches
