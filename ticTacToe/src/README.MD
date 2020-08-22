@@ -1,15 +1,46 @@
 ConvertboardIndex
 
-convertIndextoBoardLocation(val)
+# Files that matter
 
-// the two d board is a 9x9 2d array
-// cellIndex always equates to [0-2][0-2]; [0,1,2][3,4,5][6,7,8]
-// by adding the clusterIndex value you transpose the cellIndex to the right board
-// ie cellIndex: 5 -> [1][2]
-// clusterIndex 0: transpose by [0][0], so [1][2]
-// clusterIndex 1: transpose by [0][3] so [1][5]
-// clusterIndex 4: transpose by [3][3] so [4][5]
-// convert cluster index into [boardx, boardy]
-// multiply boardx & boardy by length of tic tac toe board to transpose it accordingly to the 2D board
-// add the converted index of the cell data
-// append value in the cell to the 2dboard
+### For MegaTicTacToe
+scriptMegaTicTacToe.js
+megaTicTacToe.html
+megaTicTacToe.css
+
+### For TicTacToe
+ticTacToe.js
+ticTacToe.html
+ticTacToe.css
+
+Visuals for main MegaTicTacToe logic. 
+To be edited with more details
+
+## megaTicTicTacToe.js
+conversion functions transforming from my JS 2D array to the 1D array
+representation of the UI cells and clusters
+
+![9 tic tac toe boards stack 3 from left to right and 3 top to bottom. A showing how the boards are clustered](https://drive.google.com/uc?id=14k3O1iBkWyBVgRvxWldL8s0leKUHcAZn)
+
+![9 tic tac toe boards stack 3 from left to right and 3 top to bottom. A showing of each cell index](https://drive.google.com/uc?id=1hZDlNCO-34Tgez7dIPzXrCopSFVpZ5EK) 
+
+**diagonalPositiveSlopeMatching()**
+checking for one direction of diagonal matches
+
+![9 tic tac toe boards stack 3 from left to right and 3 top to bottom](https://drive.google.com/uc?id=1ZvoZHWI8Kq2qfFh2MRDqhzRmgdiehXWg) 
+
+**diagonalNegativeSlopeMatching()**
+checking for the other direction of diagonal matches
+
+![9 tic tac toe boards stack 3 from left to right and 3 top to bottom](https://drive.google.com/file/d/1JWvtDPvkoJxemBJmDCqPu2ZbE7JodNXL/view?usp=sharing)
+
+**verticalMatching()**
+checking for vertical matches
+
+![9 tic tac toe boards stack 3 from left to right and 3 top to bottom. A showing of vertical matching.](https://drive.google.com/uc?id=1iAID27eTHHvtqqmRrNu5BcFvxCCjS8Z3) 
+
+**horizontalMatching()**
+checking for horizontal matches
+
+![9 tic tac toe boards stack 3 from left to right and 3 top to bottom. A showing of horizontal matching.](https://drive.google.com/uc?id=1HWgjS8JIZquvhD5ReDaIp_Up8bhXNRGY)
+
+
