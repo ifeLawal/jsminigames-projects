@@ -3,21 +3,28 @@
 # Files that matter
 
 ### For MegaTicTacToe
-src/scriptMegaTicTacToe.js
-src/megaTicTacToe.css
-megaTicTacToe.html
+- src/scriptMegaTicTacToe.js
+- src/megaTicTacToe.css
+- megaTicTacToe.html
 
 ### For TicTacToe
-src/ticTacToe.js
-src/ticTacToe.css
-ticTacToe.html
+- src/ticTacToe.js
+- src/ticTacToe.css
+- ticTacToe.html
 
-Visuals for main MegaTicTacToe logic. 
-To be edited with more details
+Visuals for main MegaTicTacToe logic. To be edited with more details
+
+## Rules for MegaTicTacToe
+
+* You have a total of 9 regular tic tac toe boards that you will play against npc or a person next to you on
+* Once a board is finished, you move to a new board randomly
+* You gain 1 match for any pairings of your 3 markers (O or X) ie 3 in a row = 1 match any extra pairs (4 or 5) do not grant an additonal match, 6 in a row = 2 matches any extra pairs (7 or 8) do not grant an additional match
+* Whoever gets the most matches wins
+
+- Whenever **"points"** are mentioned below in the visuals, thy are **synonymous to "match"** mentioned in the rules above.
 
 ## megaTicTicTacToe.js
-conversion functions transforming from my JS 2D array to the 1D array
-representation of the UI cells and clusters
+conversion functions transforming from JS 2D array to the 1D array representation of the UI cells and clusters
 
 ![9 tic tac toe boards stack 3 from left to right and 3 top to bottom. A showing how the boards are clustered](https://drive.google.com/uc?id=14k3O1iBkWyBVgRvxWldL8s0leKUHcAZn)
 
