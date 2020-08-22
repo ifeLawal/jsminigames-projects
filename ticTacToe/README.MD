@@ -1,16 +1,16 @@
-ConvertboardIndex
+# [Play MegaTicTacToe](https://ifelawal.github.io/jsminigames-projects/ticTacToe/megaTicTacToe.html)
 
 # Files that matter
 
 ### For MegaTicTacToe
-scriptMegaTicTacToe.js
+src/scriptMegaTicTacToe.js
+src/megaTicTacToe.css
 megaTicTacToe.html
-megaTicTacToe.css
 
 ### For TicTacToe
-ticTacToe.js
+src/ticTacToe.js
+src/ticTacToe.css
 ticTacToe.html
-ticTacToe.css
 
 Visuals for main MegaTicTacToe logic. 
 To be edited with more details
@@ -44,3 +44,9 @@ checking for horizontal matches
 ![9 tic tac toe boards stack 3 from left to right and 3 top to bottom. A showing of horizontal matching.](https://drive.google.com/uc?id=1HWgjS8JIZquvhD5ReDaIp_Up8bhXNRGY)
 
 
+### To do
+- Move files to a better directory structure (easy)
+- Fix color matching so it doesn't color 4 matches when you put a match in the middle for a match of 4 (intermediate)
+- Style page better (intermediate)
+- Consider deployment for 2 player remote playing (intermediate)
+- Possibly make npc smarter (hard)
